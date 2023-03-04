@@ -15,15 +15,15 @@ provider "azurerm" {
 
 module "ResoureGroup" {
   source    = "./ResourceGroup"
-  base_name = "ExampleRG01"
-  location  = "west us"
+  base_name = var.base_name_module_rg
+  location  = var.location_module_rg
 
 }
 
 module "StorageAccount" {
   source              = "./StorageAccount"
-  base_name           = "ExampleStorage01"
+  base_name           = var.base_name_module_storage
   resource_group_name = module.ResoureGroup.rg_name_out
-  location            = "west us"
+  location            = var.location_module_storage
 
 }
